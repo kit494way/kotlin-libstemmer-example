@@ -36,3 +36,11 @@ application {
     // Define the main class for the application.
     mainClassName = "libstemmerexample.AppKt"
 }
+
+sourceSets {
+    main {
+        java {
+            srcDir("third-party/libstemmer_java/java")
+        }
+    }
+}
