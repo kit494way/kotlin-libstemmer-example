@@ -3,13 +3,20 @@
  */
 package libstemmerexample
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello world."
-        }
-}
+import org.tartarus.snowball.SnowballStemmer
+import org.tartarus.snowball.ext.englishStemmer
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    val stemmer: SnowballStemmer = englishStemmer()
+
+    val words = listOf(
+        "apples", "boxes", "countries", "indcies", "knives", "men", "going",
+        "gone", "went", "playing", "played", "have", "has", "had", "hidden"
+    )
+
+    for (word in words) {
+        stemmer.setCurrent(word)
+        stemmer.stem()
+        println("%s -> %s".format(word, stemmer.getCurrent()))
+    }
 }
